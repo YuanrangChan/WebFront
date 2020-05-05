@@ -1,0 +1,386 @@
+2019-06-22 23:38:28,414,3720,django.request,ERROR,log.py:228,Internal Server Error: /api/user/login
+Traceback (most recent call last):
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "E:\Python37\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "E:\Python37\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "E:\Python37\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "E:\Python37\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "E:\Python37\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "E:\Python37\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "E:\Python37\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "E:\Python37\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'api_test.auth_user' doesn't exist")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Python37\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 494, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 454, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 491, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "G:\api_automation_test\api_test\api\user.py", line 27, in post
+    serializer.is_valid(raise_exception=True)
+  File "E:\Python37\lib\site-packages\rest_framework\serializers.py", line 236, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "E:\Python37\lib\site-packages\rest_framework\serializers.py", line 438, in run_validation
+    value = self.validate(value)
+  File "E:\Python37\lib\site-packages\rest_framework\authtoken\serializers.py", line 21, in validate
+    username=username, password=password)
+  File "E:\Python37\lib\site-packages\rest_framework\compat.py", line 341, in authenticate
+    return authenticate(request=request, **credentials)
+  File "E:\Python37\lib\site-packages\django\contrib\auth\__init__.py", line 73, in authenticate
+    user = backend.authenticate(request, **credentials)
+  File "E:\Python37\lib\site-packages\django\contrib\auth\backends.py", line 20, in authenticate
+    user = UserModel._default_manager.get_by_natural_key(username)
+  File "E:\Python37\lib\site-packages\django\contrib\auth\base_user.py", line 44, in get_by_natural_key
+    return self.get(**{self.model.USERNAME_FIELD: username})
+  File "E:\Python37\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 402, in get
+    num = len(clone)
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 256, in __len__
+    self._fetch_all()
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 1242, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 55, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "E:\Python37\lib\site-packages\django\db\models\sql\compiler.py", line 1100, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\mysql\base.py", line 71, in execute
+    return self.cursor.execute(query, args)
+  File "E:\Python37\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "E:\Python37\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "E:\Python37\lib\site-packages\pymysql\connections.py", line 517, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "E:\Python37\lib\site-packages\pymysql\connections.py", line 732, in _read_query_result
+    result.read()
+  File "E:\Python37\lib\site-packages\pymysql\connections.py", line 1075, in read
+    first_packet = self.connection._read_packet()
+  File "E:\Python37\lib\site-packages\pymysql\connections.py", line 684, in _read_packet
+    packet.check_error()
+  File "E:\Python37\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "E:\Python37\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.ProgrammingError: (1146, "Table 'api_test.auth_user' doesn't exist")
+2019-06-22 23:38:28,419,3720,django.server,ERROR,basehttp.py:154,"POST /api/user/login HTTP/1.1" 500 23942
+2019-06-22 23:47:52,789,18652,django.request,ERROR,log.py:228,Internal Server Error: /api/user/login
+Traceback (most recent call last):
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\sqlite3\base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: authtoken_token
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Python37\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 494, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 454, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 491, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "G:\api_automation_test\api_test\api\user.py", line 30, in post
+    data = TokenSerializer(Token.objects.get(user=user)).data
+  File "E:\Python37\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 402, in get
+    num = len(clone)
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 256, in __len__
+    self._fetch_all()
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 1242, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 55, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "E:\Python37\lib\site-packages\django\db\models\sql\compiler.py", line 1100, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\sqlite3\base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: authtoken_token
+2019-06-22 23:47:52,792,18652,django.server,ERROR,basehttp.py:154,"POST /api/user/login HTTP/1.1" 500 20857
+2019-06-22 23:56:21,835,10528,django.request,ERROR,log.py:228,Internal Server Error: /api/user/login
+Traceback (most recent call last):
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\sqlite3\base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: authtoken_token
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Python37\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 494, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 454, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 491, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "G:\api_automation_test\api_test\api\user.py", line 30, in post
+    data = TokenSerializer(Token.objects.get(user=user)).data
+  File "E:\Python37\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 402, in get
+    num = len(clone)
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 256, in __len__
+    self._fetch_all()
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 1242, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 55, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "E:\Python37\lib\site-packages\django\db\models\sql\compiler.py", line 1100, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\sqlite3\base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: authtoken_token
+2019-06-22 23:56:21,838,10528,django.server,ERROR,basehttp.py:154,"POST /api/user/login HTTP/1.1" 500 20857
+2019-06-23 11:24:33,320,18948,django.request,ERROR,log.py:228,Internal Server Error: /api/user/login
+Traceback (most recent call last):
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\sqlite3\base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: authtoken_token
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Python37\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 494, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 454, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 491, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "G:\api_automation_test\api_test\api\user.py", line 30, in post
+    data = TokenSerializer(Token.objects.get(user=user)).data
+  File "E:\Python37\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 402, in get
+    num = len(clone)
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 256, in __len__
+    self._fetch_all()
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 1242, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 55, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "E:\Python37\lib\site-packages\django\db\models\sql\compiler.py", line 1100, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\sqlite3\base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: authtoken_token
+2019-06-23 11:24:33,327,18948,django.server,ERROR,basehttp.py:154,"POST /api/user/login HTTP/1.1" 500 20857
+2019-06-23 11:47:49,514,9276,django.request,ERROR,log.py:228,Internal Server Error: /api/user/login
+Traceback (most recent call last):
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\sqlite3\base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: authtoken_token
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Python37\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 494, in dispatch
+    response = self.handle_exception(exc)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 454, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "E:\Python37\lib\site-packages\rest_framework\views.py", line 491, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "G:\api_automation_test\api_test\api\user.py", line 30, in post
+    data = TokenSerializer(Token.objects.get(user=user)).data
+  File "E:\Python37\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 402, in get
+    num = len(clone)
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 256, in __len__
+    self._fetch_all()
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 1242, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 55, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "E:\Python37\lib\site-packages\django\db\models\sql\compiler.py", line 1100, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\sqlite3\base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: authtoken_token
+2019-06-23 11:47:49,516,9276,django.server,ERROR,basehttp.py:154,"POST /api/user/login HTTP/1.1" 500 20768
+2019-06-23 11:47:57,696,9276,django.request,ERROR,log.py:228,Internal Server Error: /admin/api_test/apigrouplevelfirst/
+Traceback (most recent call last):
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\sqlite3\base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such column: api_test_apigrouplevelfirst.project_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "E:\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "E:\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Python37\lib\site-packages\django\contrib\admin\options.py", line 606, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\contrib\admin\sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "E:\Python37\lib\site-packages\django\contrib\admin\options.py", line 1790, in changelist_view
+    'selection_note': _('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 256, in __len__
+    self._fetch_all()
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 1242, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "E:\Python37\lib\site-packages\django\db\models\query.py", line 55, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "E:\Python37\lib\site-packages\django\db\models\sql\compiler.py", line 1100, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\Python37\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "E:\Python37\lib\site-packages\django\db\backends\sqlite3\base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such column: api_test_apigrouplevelfirst.project_id
+2019-06-23 11:47:57,698,9276,django.server,ERROR,basehttp.py:154,"GET /admin/api_test/apigrouplevelfirst/ HTTP/1.1" 500 168789
